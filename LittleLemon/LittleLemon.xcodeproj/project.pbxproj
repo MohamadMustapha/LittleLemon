@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F26B8202B002DBC0041B64F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B81F2B002DBC0041B64F /* Profile.swift */; };
 		4F26E3C22AFD5EB6009BFABC /* LittleLemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3C12AFD5EB6009BFABC /* LittleLemonApp.swift */; };
 		4F26E3C42AFD5EB6009BFABC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3C32AFD5EB6009BFABC /* ContentView.swift */; };
 		4F26E3C62AFD5EB8009BFABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F26E3C52AFD5EB8009BFABC /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F26B81F2B002DBC0041B64F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4F26E3BE2AFD5EB6009BFABC /* LittleLemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F26E3C12AFD5EB6009BFABC /* LittleLemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonApp.swift; sourceTree = "<group>"; };
 		4F26E3C32AFD5EB6009BFABC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */,
 				4FDBA5B42B00172C00834F03 /* Home.swift */,
 				4FDBA5B62B00175600834F03 /* Menu.swift */,
+				4F26B81F2B002DBC0041B64F /* Profile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F26E3CB2AFD5EB8009BFABC /* Persistence.swift in Sources */,
+				4F26B8202B002DBC0041B64F /* Profile.swift in Sources */,
 				4F26E3CE2AFD5EB8009BFABC /* LittleLemon.xcdatamodeld in Sources */,
 				4FDBA5B72B00175600834F03 /* Menu.swift in Sources */,
 				4FDBA5B32AFFEA9C00834F03 /* Onboarding.swift in Sources */,
