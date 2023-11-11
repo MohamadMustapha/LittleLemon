@@ -15,8 +15,11 @@ struct Onboarding: View {
     @State var FirstName: String
     @State var LastName: String
     @State var Email: String
+    @State var isLoggedIn: Bool = false
      var body: some View {
+         NavigationView(content: {
         VStack{
+            NavigationLink(destination: Home(),isActive: $isLoggedIn) { EmptyView() }
             HStack{
                 TextField("First Name", text: $FirstName)
                     .padding(10)
@@ -64,6 +67,8 @@ struct Onboarding: View {
                     UserDefaults
                         .standard
                         .set(Email, forKey: email)
+                    
+                    isLoggedIn = true
                     print("success")
                 }
                 else{
@@ -83,7 +88,7 @@ struct Onboarding: View {
             
         }.padding()
          
-
+         })
     }
     func isValidEmail(_ email: String) -> Bool {
         let emailRegex = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"#
