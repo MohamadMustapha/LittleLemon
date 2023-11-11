@@ -16,6 +16,7 @@
 		4F26E3D82AFD5EB8009BFABC /* LittleLemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3D72AFD5EB8009BFABC /* LittleLemonTests.swift */; };
 		4F26E3E22AFD5EB8009BFABC /* LittleLemonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */; };
 		4F26E3E42AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */; };
+		4FDBA5B32AFFEA9C00834F03 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		4F26E3DD2AFD5EB8009BFABC /* LittleLemonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LittleLemonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITests.swift; sourceTree = "<group>"; };
 		4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				4F26E3CA2AFD5EB8009BFABC /* Persistence.swift */,
 				4F26E3CC2AFD5EB8009BFABC /* LittleLemon.xcdatamodeld */,
 				4F26E3C72AFD5EB8009BFABC /* Preview Content */,
+				4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */,
 			);
 			path = LittleLemon;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			files = (
 				4F26E3CB2AFD5EB8009BFABC /* Persistence.swift in Sources */,
 				4F26E3CE2AFD5EB8009BFABC /* LittleLemon.xcdatamodeld in Sources */,
+				4FDBA5B32AFFEA9C00834F03 /* Onboarding.swift in Sources */,
 				4F26E3C42AFD5EB6009BFABC /* ContentView.swift in Sources */,
 				4F26E3C22AFD5EB6009BFABC /* LittleLemonApp.swift in Sources */,
 			);

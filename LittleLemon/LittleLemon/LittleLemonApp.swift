@@ -13,8 +13,9 @@ struct LittleLemonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+            //            ContentView()
+            //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //        }
+            Onboarding(FirstName: "mohamad", LastName: "mustapha", Email: "mmeraabi@gmail.com")        }
     }
 }
