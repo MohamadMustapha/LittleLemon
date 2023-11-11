@@ -17,6 +17,8 @@
 		4F26E3E22AFD5EB8009BFABC /* LittleLemonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */; };
 		4F26E3E42AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */; };
 		4FDBA5B32AFFEA9C00834F03 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */; };
+		4FDBA5B52B00172C00834F03 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA5B42B00172C00834F03 /* Home.swift */; };
+		4FDBA5B72B00175600834F03 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBA5B62B00175600834F03 /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITests.swift; sourceTree = "<group>"; };
 		4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		4FDBA5B42B00172C00834F03 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4FDBA5B62B00175600834F03 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,13 +104,13 @@
 		4F26E3C02AFD5EB6009BFABC /* LittleLemon */ = {
 			isa = PBXGroup;
 			children = (
+				4FDBA5B82B00176D00834F03 /* Views */,
 				4F26E3C12AFD5EB6009BFABC /* LittleLemonApp.swift */,
 				4F26E3C32AFD5EB6009BFABC /* ContentView.swift */,
 				4F26E3C52AFD5EB8009BFABC /* Assets.xcassets */,
 				4F26E3CA2AFD5EB8009BFABC /* Persistence.swift */,
 				4F26E3CC2AFD5EB8009BFABC /* LittleLemon.xcdatamodeld */,
 				4F26E3C72AFD5EB8009BFABC /* Preview Content */,
-				4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */,
 			);
 			path = LittleLemon;
 			sourceTree = "<group>";
@@ -134,6 +138,16 @@
 				4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */,
 			);
 			path = LittleLemonUITests;
+			sourceTree = "<group>";
+		};
+		4FDBA5B82B00176D00834F03 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FDBA5B22AFFEA9C00834F03 /* Onboarding.swift */,
+				4FDBA5B42B00172C00834F03 /* Home.swift */,
+				4FDBA5B62B00175600834F03 /* Menu.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +282,10 @@
 			files = (
 				4F26E3CB2AFD5EB8009BFABC /* Persistence.swift in Sources */,
 				4F26E3CE2AFD5EB8009BFABC /* LittleLemon.xcdatamodeld in Sources */,
+				4FDBA5B72B00175600834F03 /* Menu.swift in Sources */,
 				4FDBA5B32AFFEA9C00834F03 /* Onboarding.swift in Sources */,
 				4F26E3C42AFD5EB6009BFABC /* ContentView.swift in Sources */,
+				4FDBA5B52B00172C00834F03 /* Home.swift in Sources */,
 				4F26E3C22AFD5EB6009BFABC /* LittleLemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +457,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +486,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
