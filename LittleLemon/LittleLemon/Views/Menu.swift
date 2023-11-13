@@ -10,13 +10,20 @@ import CoreData
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State var searchText = ""
     var body: some View {
         NavigationView{
             VStack{
                 Text("Little Lemon")
                 Text("Chicago")
                 Text("We are a food delivery app in Chicago called Little Lemon")
-                FetchedObjects() { (dishes: [Dish]) in
+                TextField("Search for a dish", text: $searchText)
+                    .padding()
+                FetchedObjects(
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
+                )
+                    { (dishes: [Dish]) in
                     List{
                         ForEach(dishes){dish in
                             NavigationLink(destination: Text("\(dish.title!) details")){
@@ -57,7 +64,15 @@ struct Menu: View {
         urlSession.resume()
         
     }
-    
+    func buildSortDescriptors() -> [NSSortDescriptor]{
+        return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare))]
+    }
+    func buildPredicate() -> NSPredicate{
+        if searchText.isEmpty{
+            return NSPredicate(value: true)
+        }
+        return NSPredicate(format: "title CONTAINS [cd] %@",searchText)
+    }
   
 }
 #Preview {
