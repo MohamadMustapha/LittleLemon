@@ -7,9 +7,10 @@
 
 import SwiftUI
 
- let firstName = "Mohamad"
- let lastName = "Mustapha"
- let email = "mmeraabi2012@gmail.com"
+let firstName = "Mohamad"
+let lastName = "Mustapha"
+let email = "mmeraabi2012@gmail.com"
+let kisLoggedIn = "kisLoggedIn"
 
 struct Onboarding: View {
     @State var FirstName: String
@@ -67,7 +68,9 @@ struct Onboarding: View {
                     UserDefaults
                         .standard
                         .set(Email, forKey: email)
-                    
+                    UserDefaults
+                        .standard
+                        .set(true, forKey: kisLoggedIn)
                     isLoggedIn = true
                     print("success")
                 }
@@ -87,6 +90,11 @@ struct Onboarding: View {
  
             
         }.padding()
+                 .onAppear {
+                     if UserDefaults.standard.bool(forKey: kisLoggedIn) {
+                         isLoggedIn = true
+                     }
+                 }
          
          })
     }
