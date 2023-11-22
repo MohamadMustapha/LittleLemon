@@ -10,12 +10,14 @@ import SwiftUI
 let firstName = "Mohamad"
 let lastName = "Mustapha"
 let email = "mmeraabi2012@gmail.com"
+let phoneNumber = "78835354"
 let kisLoggedIn = "kisLoggedIn"
 
 struct Onboarding: View {
     @State var FirstName: String
     @State var LastName: String
     @State var Email: String
+    @State var PhoneNumber: String
     @State var isLoggedIn: Bool = false
      var body: some View {
          NavigationView(content: {
@@ -59,18 +61,11 @@ struct Onboarding: View {
             Button(action: {
                 if (!Email.isEmpty && !LastName.isEmpty && !FirstName.isEmpty && isValidEmail(Email)){
                     
-                    UserDefaults
-                        .standard
-                        .set(FirstName, forKey: firstName)
-                    UserDefaults
-                        .standard
-                        .set(LastName, forKey: lastName)
-                    UserDefaults
-                        .standard
-                        .set(Email, forKey: email)
-                    UserDefaults
-                        .standard
-                        .set(true, forKey: kisLoggedIn)
+                    UserDefaults.standard.set(FirstName, forKey: firstName)
+                    UserDefaults.standard.set(LastName, forKey: lastName)
+                    UserDefaults.standard.set(Email, forKey: email)
+                    UserDefaults.standard.set(PhoneNumber, forKey: phoneNumber)
+                    UserDefaults.standard.set(true, forKey: kisLoggedIn)
                     isLoggedIn = true
                     print("success")
                 }
@@ -108,5 +103,5 @@ struct Onboarding: View {
 
 
 #Preview {
-    Onboarding(FirstName: "", LastName: "", Email: "")
+    Onboarding(FirstName: "", LastName: "", Email: "", PhoneNumber: "")
 }

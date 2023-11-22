@@ -16,6 +16,6 @@ struct LittleLemonApp: App {
             //            ContentView()
             //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             //        }
-            Onboarding(FirstName: "mohamad", LastName: "mustapha", Email: "mmeraabi@gmail.com")        }
+            Onboarding(FirstName: "mohamad", LastName: "mustapha", Email: "mmeraabi@gmail.com", PhoneNumber: "78835354")        }
     }
 }
