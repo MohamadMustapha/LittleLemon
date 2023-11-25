@@ -9,23 +9,19 @@ import SwiftUI
 
 struct Profile: View {
     
-    let fname = UserDefaults.standard.string(forKey: firstName)
-    let lname = UserDefaults.standard.string(forKey: lastName)
-    let emailValue = UserDefaults.standard.string(forKey: email)
-    
     @Environment(\.presentationMode) var presentation
     
-    @State private var firstNameText = ""
-    @State private var lastNameText = ""
-    @State private var emailText = ""
-    @State private var phoneNumberText = ""
+    @State private var firstName = ""
+    @State private var lastName = ""
+    @State private var email = ""
+    @State private var phoneNumber = ""
     
-    @State private var orderStatus = false
+    @State private var orderStatuses = false
     @State private var passwordChanges = false
-    @State private var  specialOffers = false
+    @State private var specialOffers = false
     @State private var newsletter = false
 
-
+    @StateObject private var model = Model()
     var body: some View {
         VStack{
             
@@ -62,7 +58,7 @@ struct Profile: View {
                     
                     Text("First name")
                         .onboardingTextStyle()
-                    TextField("First Name", text: $firstNameText)
+                    TextField("First Name", text: $firstName)
                     
                 }
                 .padding(.vertical)
@@ -71,7 +67,7 @@ struct Profile: View {
                     
                     Text("Last name")
                         .onboardingTextStyle()
-                    TextField("Last Name", text: $lastNameText)
+                    TextField("Last Name", text: $lastName)
                     
                 }
                 
@@ -79,7 +75,7 @@ struct Profile: View {
                     
                     Text("Email")
                         .onboardingTextStyle()
-                    TextField("Email", text: $emailText)
+                    TextField("Email", text: $email)
                         .keyboardType(.emailAddress)
                     
                 }
@@ -89,7 +85,7 @@ struct Profile: View {
                     
                     Text("Phone number")
                         .onboardingTextStyle()
-                    TextField("Phone Number", text: $phoneNumberText)
+                    TextField("Phone Number", text: $phoneNumber)
                         .keyboardType(.phonePad)
                     
                 }
@@ -102,7 +98,7 @@ struct Profile: View {
 
                 VStack {
                     
-                    Toggle("Order Statuses", isOn: $orderStatus)
+                    Toggle("Order Statuses", isOn: $orderStatuses)
                     Toggle("Password Changes", isOn: $passwordChanges)
                     Toggle("Special Offers", isOn: $specialOffers)
                     Toggle("Newsletter", isOn: $newsletter)
@@ -114,16 +110,46 @@ struct Profile: View {
 
                 HStack{
                     
-                    Button("Discard Changes") {}
+                    Button("Discard Changes") {
+                        firstName = model.firstName
+                        lastName = model.lastName
+                        email = model.email
+                        phoneNumber = model.phoneNumber
+                        
+                        orderStatuses = model.orderStatuses
+                        passwordChanges = model.passwordChanges
+                        specialOffers = model.specialOffers
+                        newsletter = model.newsletter
+                    }
                         .buttonStyle(ButtonStylePrimaryColorReverse())
-                    Button("Save Changes") {}
+                    Button("Save Changes") {
+                        
+                        UserDefaults.standard.set(firstName, forKey: kFirstName)
+                        UserDefaults.standard.set(lastName, forKey: kLastName)
+                        UserDefaults.standard.set(email, forKey: kEmail)
+                        UserDefaults.standard.set(phoneNumber, forKey: kPhoneNumber)
+                        UserDefaults.standard.set(false, forKey: kOrderStatuses)
+                        UserDefaults.standard.set(false, forKey: kPasswordChanges)
+                        UserDefaults.standard.set(false, forKey: kSpecialOffers)
+                        UserDefaults.standard.set(false, forKey: kNewsletter)
+                        self.presentation.wrappedValue.dismiss()
+
+                    }
                         .buttonStyle(ButtonStylePrimaryColor1())
                     
                 }
                 .padding(.vertical)
                 
                 Button("Logout"){
-                    UserDefaults.standard.set(false,forKey: kisLoggedIn)
+                    UserDefaults.standard.set("", forKey: kFirstName)
+                    UserDefaults.standard.set("", forKey: kLastName)
+                    UserDefaults.standard.set("", forKey: kEmail)
+                    UserDefaults.standard.set("", forKey: kPhoneNumber)
+                    UserDefaults.standard.set(false, forKey: kOrderStatuses)
+                    UserDefaults.standard.set(false, forKey: kPasswordChanges)
+                    UserDefaults.standard.set(false, forKey: kSpecialOffers)
+                    UserDefaults.standard.set(false, forKey: kNewsletter)
+                    UserDefaults.standard.set(false, forKey: kIsLoggedIn)
                     self.presentation.wrappedValue.dismiss()
                     }
                     .buttonStyle(ButtonStyleYellowColorWide())
@@ -131,6 +157,17 @@ struct Profile: View {
         }
         .textFieldStyle(.roundedBorder)
         .padding()
+        .onAppear {
+                    firstName = model.firstName
+                    lastName = model.lastName
+                    email = model.email
+                    phoneNumber = model.phoneNumber
+                    
+                    orderStatuses = model.orderStatuses
+                    passwordChanges = model.passwordChanges
+                    specialOffers = model.specialOffers
+                    newsletter = model.newsletter
+                }
     }
 }
 

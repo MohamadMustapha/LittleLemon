@@ -7,91 +7,91 @@
 
 import SwiftUI
 
-let firstName = "Mohamad"
-let lastName = "Mustapha"
-let email = "mmeraabi2012@gmail.com"
-let phoneNumber = "78835354"
-let kisLoggedIn = "kisLoggedIn"
 
 struct Onboarding: View {
-    @State var FirstName: String
-    @State var LastName: String
-    @State var Email: String
-    @State var PhoneNumber: String
+    @StateObject private var model = Model()
+    
+    @State var firstName: String
+    @State var lastName: String
+    @State var email: String
+    @State var phoneNumber: String
     @State var isLoggedIn: Bool = false
      var body: some View {
          NavigationView(content: {
         VStack{
             NavigationLink(destination: Home(),isActive: $isLoggedIn) { EmptyView() }
-            HStack{
-                TextField("First Name", text: $FirstName)
-                    .padding(10)
-                    .background(
-                        RoundedRectangle(
-                            cornerRadius: 5
-                        )
-                        .stroke(
-                            Color.green,
-                            lineWidth: 1)
-                    )
-                
-                TextField("Last Name", text: $LastName)
-                    .padding(10)
-                    .background(
-                        RoundedRectangle(
-                            cornerRadius: 5
-                        )
-                        .stroke(
-                            Color.green,
-                            lineWidth: 1)
-                    )
-            }
-            .padding(.vertical)
             
-            TextField("Email", text: $Email)
-                .padding(10)
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 5
-                    )
-                    .stroke(
-                        Color.green,
-                        lineWidth: 1)
-                )
-            Button(action: {
-                if (!Email.isEmpty && !LastName.isEmpty && !FirstName.isEmpty && isValidEmail(Email)){
+            Image("Logo")
+            Hero()
+                .background(Color.primaryColor1)
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            
+            VStack {
+                
+                HStack {
+                    VStack{
+                        
+                        Text("First name *")
+                            .onboardingTextStyle()
+                        TextField("First Name", text: $firstName)
+                        
+                    }
+                    .padding(.vertical)
                     
-                    UserDefaults.standard.set(FirstName, forKey: firstName)
-                    UserDefaults.standard.set(LastName, forKey: lastName)
-                    UserDefaults.standard.set(Email, forKey: email)
-                    UserDefaults.standard.set(PhoneNumber, forKey: phoneNumber)
-                    UserDefaults.standard.set(true, forKey: kisLoggedIn)
-                    isLoggedIn = true
-                    print("success")
+                    
+                    VStack{
+                        
+                        Text("Last name *")
+                            .onboardingTextStyle()
+                        TextField("Last Name", text: $lastName)
+                        
+                    }
                 }
-                else{
-                    print("error")
+                VStack{
+                    
+                    Text("Email *")
+                        .onboardingTextStyle()
+                    TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                    
                 }
-            })
-            {
-                Text("Register")
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .background(.green)
-                    .cornerRadius(50)
                 
+                VStack{
+                    
+                    Text("Phone number *")
+                        .onboardingTextStyle()
+                    TextField("Phone Number", text: $phoneNumber)
+                        .keyboardType(.phonePad)
+                    
+                }
+                .padding(.vertical)
+                Button("Register",action: {
+                    if (!email.isEmpty && !lastName.isEmpty && !firstName.isEmpty && isValidEmail(email)){
+                        
+                        UserDefaults.standard.set(firstName, forKey: kFirstName)
+                        UserDefaults.standard.set(lastName, forKey: kLastName)
+                        UserDefaults.standard.set(email, forKey: kEmail)
+                        UserDefaults.standard.set(phoneNumber, forKey: kPhoneNumber)
+                        UserDefaults.standard.set(true, forKey: kOrderStatuses)
+                        UserDefaults.standard.set(true, forKey: kPasswordChanges)
+                        UserDefaults.standard.set(true, forKey: kSpecialOffers)
+                        UserDefaults.standard.set(true, forKey: kNewsletter)
+                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
+                        isLoggedIn = true
+                        print("success")
+                    }
+                })
+                .buttonStyle(ButtonStyleYellowColorWide())
             }
-            .padding(.vertical)
- 
-            
-        }.padding()
-                 .onAppear {
-                     if UserDefaults.standard.bool(forKey: kisLoggedIn) {
-                         isLoggedIn = true
-                     }
-                 }
-         
+            .padding()
+        }
+        .onAppear {
+            if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
+                isLoggedIn = true
+            }
+        }
          })
+         
     }
     func isValidEmail(_ email: String) -> Bool {
         let emailRegex = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"#
@@ -103,5 +103,5 @@ struct Onboarding: View {
 
 
 #Preview {
-    Onboarding(FirstName: "", LastName: "", Email: "", PhoneNumber: "")
+    Onboarding(firstName: "", lastName: "", email: "", phoneNumber: "")
 }
