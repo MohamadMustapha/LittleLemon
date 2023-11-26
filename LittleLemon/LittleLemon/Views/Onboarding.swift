@@ -10,98 +10,106 @@ import SwiftUI
 
 struct Onboarding: View {
     @StateObject private var model = Model()
+    @State private var firstName = ""
+    @State private var lastName = ""
+    @State private var email = ""
+    @State private var phoneNumber = ""
+    @State private var isLoggedIn = false
     
-    @State var firstName: String
-    @State var lastName: String
-    @State var email: String
-    @State var phoneNumber: String
-    @State var isLoggedIn: Bool = false
-     var body: some View {
-         NavigationView(content: {
-        VStack{
-            NavigationLink(destination: Home(),isActive: $isLoggedIn) { EmptyView() }
-            
-            Image("Logo")
-            Hero()
-                .background(Color.primaryColor1)
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            
+    var body: some View {
+        NavigationView {
             VStack {
-                
-                HStack {
-                    VStack{
-                        
-                        Text("First name *")
-                            .onboardingTextStyle()
-                        TextField("First Name", text: $firstName)
-                        
-                    }
-                    .padding(.vertical)
-                    
-                    
-                    VStack{
-                        
-                        Text("Last name *")
-                            .onboardingTextStyle()
-                        TextField("Last Name", text: $lastName)
-                        
-                    }
+                NavigationLink(destination: Home(), isActive: $isLoggedIn) {
+                    EmptyView()
                 }
-                VStack{
-                    
-                    Text("Email *")
-                        .onboardingTextStyle()
-                    TextField("Email", text: $email)
+                
+                Image("Logo")
+                Hero()
+                    .background(Color.primaryColor1)
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+
+                VStack() {
+                    HStack{
+                        TextFields(title: "First name *",
+                                   placeholder: "First Name",
+                                   text: $firstName)
+                        TextFields(title: "Last name *",
+                                   placeholder: "Last Name",
+                                   text: $lastName)
+                    }
+                    TextFields(title: "Email *", 
+                               placeholder: "Email",
+                               text: $email)
                         .keyboardType(.emailAddress)
-                    
-                }
-                
-                VStack{
-                    
-                    Text("Phone number *")
-                        .onboardingTextStyle()
-                    TextField("Phone Number", text: $phoneNumber)
+                    TextFields(title: "Phone number *", 
+                               placeholder: "Phone Number",
+                               text: $phoneNumber)
                         .keyboardType(.phonePad)
                     
-                }
-                .padding(.vertical)
-                Button("Register",action: {
-                    if (!email.isEmpty && !lastName.isEmpty && !firstName.isEmpty && isValidEmail(email)){
-                        
-                        UserDefaults.standard.set(firstName, forKey: kFirstName)
-                        UserDefaults.standard.set(lastName, forKey: kLastName)
-                        UserDefaults.standard.set(email, forKey: kEmail)
-                        UserDefaults.standard.set(phoneNumber, forKey: kPhoneNumber)
-                        UserDefaults.standard.set(true, forKey: kOrderStatuses)
-                        UserDefaults.standard.set(true, forKey: kPasswordChanges)
-                        UserDefaults.standard.set(true, forKey: kSpecialOffers)
-                        UserDefaults.standard.set(true, forKey: kNewsletter)
-                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
-                        isLoggedIn = true
-                        print("success")
+                    Button("Register") {
+                        handleRegistration()
                     }
-                })
-                .buttonStyle(ButtonStyleYellowColorWide())
+                    .buttonStyle(ButtonStyleYellowColorWide())
+                }
+                .padding()
             }
-            .padding()
-        }
-        .onAppear {
-            if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
-                isLoggedIn = true
+            .onAppear {
+                isLoggedIn = UserDefaults.standard.bool(forKey: kIsLoggedIn)
             }
+            .disableAutocorrection(true)
         }
-         })
-         
     }
+    
+    func handleRegistration() {
+        guard isValidEmail(email) else {
+            // Handle invalid email format
+            return
+        }
+        
+        model.updateData(firstName: firstName,
+                         lastName: lastName,
+                         email: email,
+                         phoneNumber: phoneNumber,
+                         orderStatuses: true,
+                         passwordChanges: true,
+                         specialOffers: true,
+                         newsletter: true)
+        
+        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
+        clearFields()
+        isLoggedIn = true
+        print("success")
+    }
+    
     func isValidEmail(_ email: String) -> Bool {
         let emailRegex = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$"#
-        
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
+    
+    func clearFields() {
+        firstName = ""
+        lastName = ""
+        email = ""
+        phoneNumber = ""
+    }
 }
 
+struct TextFields: View {
+    let title: String
+    let placeholder: String
+    @Binding var text: String
+    
+    var body: some View {
+        VStack {
+            Text(title)
+                .onboardingTextStyle()
+            TextField(placeholder, text: $text)
+        }
+        .padding(.vertical, 5)
+    }
+}
 
 #Preview {
-    Onboarding(firstName: "", lastName: "", email: "", phoneNumber: "")
+    Onboarding()
 }
