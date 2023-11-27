@@ -11,25 +11,27 @@ struct FoodItem: View {
     @State var dish: Dish
     var body: some View {
         HStack{
-            VStack(alignment:.leading){
+            VStack(alignment:.leading, spacing: 5){
                 Text(dish.title!)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
                 Text(dish.desc!)
-                    .font(.callout)
+                    .font(.caption)
                     .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                 Text("$\(dish.price!)")
                     .fontWeight(.medium)
             }
-            Spacer()
+            Spacer(minLength: 50)
             AsyncImage(url: URL(string: dish.image ?? "")) { image in
                             image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                
                         } placeholder: {
                             ProgressView()
+                            
                         }
-                        .frame(maxWidth: 90, maxHeight: 90)
+                        .frame(maxWidth: 120, maxHeight: 90)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
         }
         .padding()

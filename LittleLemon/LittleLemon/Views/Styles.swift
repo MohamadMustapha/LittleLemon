@@ -43,7 +43,14 @@ extension Text {
         self
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color.primaryColor1)
-            .font(.custom("Karla-Bold", size: 13))
+    }
+    func sectionsTextStyle() -> some View {
+        self
+            .foregroundColor(Color.black)
+            .font(.title2)
+            .fontWeight(.bold)
+            .padding(.vertical)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 struct ButtonStyleYellowColorWide: ButtonStyle {
@@ -84,5 +91,24 @@ struct ButtonStylePrimaryColorReverse: ButtonStyle {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.primaryColor1, lineWidth: 1)
             )
+    }
+}
+
+struct MyToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        Button {
+            configuration.isOn.toggle()
+        } label: {
+            HStack {
+                configuration.label
+                    .font(.system(size: 16, weight: .bold))
+            }
+        }
+        .foregroundColor(configuration.isOn ? Color.highlightColor1 : Color.primaryColor1)
+        .padding(10)
+        .background {
+            configuration.isOn ? Color.primaryColor1 : Color.highlightColor1
+        }
+        .cornerRadius(20)
     }
 }

@@ -29,15 +29,11 @@ struct Profile: View {
         VStack {
             NavigationLink(destination: Onboarding(), isActive: $isLoggedIn) { EmptyView() }
             
-            Image("Logo")
-            
+            Header()
             ScrollView(showsIndicators: false) {
                 VStack() {
                     Text("Personal Information")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.vertical)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .sectionsTextStyle()
                     
                     AvatarSection()
                     TextFields(title: "First name", placeholder: "First Name", text: $firstName)
@@ -50,7 +46,7 @@ struct Profile: View {
                     SaveDiscardButtons()
                     LogoutButton()
                 }
-                .padding()
+                .padding(.horizontal)
             }
         }
         .textFieldStyle(.roundedBorder)
@@ -111,11 +107,7 @@ struct Profile: View {
     func EmailNotificationSection() -> some View {
         VStack {
             Text("Email notifications")
-                .foregroundColor(Color.black)
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.vertical)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .sectionsTextStyle()
             
             Toggle("Order Statuses", isOn: $orderStatuses)
             Toggle("Password Changes", isOn: $passwordChanges)
