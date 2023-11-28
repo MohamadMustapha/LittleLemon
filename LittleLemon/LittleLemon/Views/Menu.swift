@@ -17,6 +17,7 @@ struct Menu: View {
     @State var dessertsEnabled = false
     @State var drinksEnabled = false
 
+    @State var isAscending = true
     var body: some View {
         NavigationView{
             VStack{
@@ -37,7 +38,7 @@ struct Menu: View {
                     { (dishes: [Dish]) in
                     List{
                         ForEach(dishes){dish in
-                            NavigationLink(destination: Text("\(dish.title!) details \(dish.category!)")){
+                            NavigationLink(destination: DetailItem(dish: dish)){
                                 FoodItem(dish: dish)
                             }
                         }
@@ -54,10 +55,13 @@ struct Menu: View {
     
     func Categories() -> some View{
         VStack{
-            Text("ORDER FOR DELIVERY")
-                .sectionsTextStyle()
+            HStack {
+                Text("ORDER FOR DELIVERY")
+                    .sectionsTextStyle()
+                SortTool()
+            }
             ScrollView(.horizontal, showsIndicators: false){
-                HStack(spacing: 20 ){
+                HStack(spacing: 15 ){
                     Toggle("Starters", isOn: $startersEnabled)
                     Toggle("Mains", isOn: $mainsEnabled)
                     Toggle("Desserts", isOn: $dessertsEnabled)
@@ -67,7 +71,7 @@ struct Menu: View {
             }
             Divider()
         }
-        .padding(.leading)
+        .padding(.horizontal)
     }
     
     func SearchBar() -> some View {
@@ -76,9 +80,16 @@ struct Menu: View {
             .font(.system(size: 20, weight: .heavy, design: .default))
             .padding()
     }
+    func SortTool() -> some View {
+        Button(action: {
+            isAscending.toggle()
+        }) {
+            Image(systemName: isAscending ? "arrow.up" : "arrow.down")
+        }
+    }
 
     func buildSortDescriptors() -> [NSSortDescriptor]{
-        return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare))]
+        return [NSSortDescriptor(key: "title", ascending: isAscending)]
     }
     
     func buildPredicate() -> NSPredicate{

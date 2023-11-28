@@ -28,7 +28,7 @@ struct MenuList: Decodable {
                     newDish.title = dish.title
                     newDish.price = dish.price
                     newDish.desc = dish.description
-                    newDish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/pasta.jpg?raw=true"
+                    newDish.image = dish.image
                     newDish.category = dish.category
                 }
                 try? viewContext.save()
