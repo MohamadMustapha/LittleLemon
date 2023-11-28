@@ -15,12 +15,13 @@
 		4F26E3E22AFD5EB8009BFABC /* LittleLemonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */; };
 		4F26E3E42AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */; };
 		4F3CEB422B168B3800C426EB /* DetailsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CEB412B168B3800C426EB /* DetailsItem.swift */; };
+		4F3CEB442B16973B00C426EB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3CEB432B16973B00C426EB /* Persistence.swift */; };
+		4F3CEB462B1697C700C426EB /* LittleLemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F3CEB452B1697C700C426EB /* LittleLemon.jpg */; };
 		4F77C8822B0E667C00D6F111 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77C8812B0E667C00D6F111 /* Styles.swift */; };
 		4F77C8862B0E994400D6F111 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77C8852B0E994400D6F111 /* UserDefaults.swift */; };
 		4F792CEA2B12684100F9521A /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F792CE92B12684100F9521A /* Hero.swift */; };
 		4F792CEC2B13CFFF00F9521A /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F792CEB2B13CFFF00F9521A /* Header.swift */; };
 		4F8063492B0298BA00DAF333 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8063472B0298B900DAF333 /* FetchedObjects.swift */; };
-		4F80634A2B0298BA00DAF333 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8063482B0298BA00DAF333 /* Persistence.swift */; };
 		4F80634D2B0299E900DAF333 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F80634C2B0299E900DAF333 /* MenuList.swift */; };
 		4F80634F2B0299F700DAF333 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F80634E2B0299F700DAF333 /* MenuItem.swift */; };
 		4F8063522B029F5700DAF333 /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F8063502B029F5700DAF333 /* ExampleDatabase.xcdatamodeld */; };
@@ -59,12 +60,13 @@
 		4F26E3E12AFD5EB8009BFABC /* LittleLemonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITests.swift; sourceTree = "<group>"; };
 		4F26E3E32AFD5EB8009BFABC /* LittleLemonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4F3CEB412B168B3800C426EB /* DetailsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItem.swift; sourceTree = "<group>"; };
+		4F3CEB432B16973B00C426EB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		4F3CEB452B1697C700C426EB /* LittleLemon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LittleLemon.jpg; sourceTree = "<group>"; };
 		4F77C8812B0E667C00D6F111 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		4F77C8852B0E994400D6F111 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		4F792CE92B12684100F9521A /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		4F792CEB2B13CFFF00F9521A /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		4F8063472B0298B900DAF333 /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
-		4F8063482B0298BA00DAF333 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistence.swift; path = ../../../../Downloads/KrOCQU2CTpmu1REIfryAvg_ae0cd909bf5e4e7db7525f835ddd50e1_CoreDataSupport/Persistence.swift; sourceTree = "<group>"; };
 		4F80634C2B0299E900DAF333 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		4F80634E2B0299F700DAF333 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		4F8063512B029F5700DAF333 /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		4F26E3B52AFD5EB5009BFABC = {
 			isa = PBXGroup;
 			children = (
+				4F3CEB452B1697C700C426EB /* LittleLemon.jpg */,
 				4F26E3C02AFD5EB6009BFABC /* LittleLemon */,
 				4F26E3D62AFD5EB8009BFABC /* LittleLemonTests */,
 				4F26E3E02AFD5EB8009BFABC /* LittleLemonUITests */,
@@ -127,7 +130,7 @@
 				4FDBA5B82B00176D00834F03 /* Views */,
 				4F26E3C12AFD5EB6009BFABC /* LittleLemonApp.swift */,
 				4F8063472B0298B900DAF333 /* FetchedObjects.swift */,
-				4F8063482B0298BA00DAF333 /* Persistence.swift */,
+				4F3CEB432B16973B00C426EB /* Persistence.swift */,
 				4F26E3C52AFD5EB8009BFABC /* Assets.xcassets */,
 				4F26E3C72AFD5EB8009BFABC /* Preview Content */,
 				4F8063502B029F5700DAF333 /* ExampleDatabase.xcdatamodeld */,
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3CEB462B1697C700C426EB /* LittleLemon.jpg in Resources */,
 				4F26E3C92AFD5EB8009BFABC /* Preview Assets.xcassets in Resources */,
 				4F26E3C62AFD5EB8009BFABC /* Assets.xcassets in Resources */,
 			);
@@ -325,6 +329,7 @@
 			files = (
 				4F8063522B029F5700DAF333 /* ExampleDatabase.xcdatamodeld in Sources */,
 				4F3CEB422B168B3800C426EB /* DetailsItem.swift in Sources */,
+				4F3CEB442B16973B00C426EB /* Persistence.swift in Sources */,
 				4F26B8202B002DBC0041B64F /* Profile.swift in Sources */,
 				4FDBA5B72B00175600834F03 /* Menu.swift in Sources */,
 				4F77C8822B0E667C00D6F111 /* Styles.swift in Sources */,
@@ -335,7 +340,6 @@
 				4F8063492B0298BA00DAF333 /* FetchedObjects.swift in Sources */,
 				4F80634D2B0299E900DAF333 /* MenuList.swift in Sources */,
 				4F792CEC2B13CFFF00F9521A /* Header.swift in Sources */,
-				4F80634A2B0298BA00DAF333 /* Persistence.swift in Sources */,
 				4F792CEA2B12684100F9521A /* Hero.swift in Sources */,
 				4F80634F2B0299F700DAF333 /* MenuItem.swift in Sources */,
 				4F8063542B02AB6400DAF333 /* FoodItem.swift in Sources */,
