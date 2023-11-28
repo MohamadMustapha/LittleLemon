@@ -11,14 +11,26 @@ import CoreData
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var searchText = ""
+    
+    @State var startersEnabled = false
+    @State var mainsEnabled = false
+    @State var dessertsEnabled = false
+    @State var drinksEnabled = false
+
+    @State var isAscending = true
     var body: some View {
         NavigationView{
             VStack{
-                Text("Little Lemon")
-                Text("Chicago")
-                Text("We are a food delivery app in Chicago called Little Lemon")
-                TextField("Search for a dish", text: $searchText)
-                    .padding()
+                Header()
+                
+                VStack(spacing: 0){
+                    Hero()
+                    SearchBar()
+                }
+                .background(Color.primaryColor1)
+                
+                Categories()
+
                 FetchedObjects(
                     predicate: buildPredicate(),
                     sortDescriptors: buildSortDescriptors()
@@ -26,52 +38,72 @@ struct Menu: View {
                     { (dishes: [Dish]) in
                     List{
                         ForEach(dishes){dish in
-                            NavigationLink(destination: Text("\(dish.title!) details")){
+                            NavigationLink(destination: DetailItem(dish: dish)){
                                 FoodItem(dish: dish)
                             }
                         }
                     }
+                    .listStyle(.plain)
                 }
             }
-        }.onAppear(){
-            getMenuData(viewContext: viewContext)
+        }
+        .onAppear(){
+            MenuList.getMenuData(viewContext: viewContext)
         }
 
     }
-    func getMenuData(viewContext: NSManagedObjectContext){
-        
-        PersistenceController.shared.clear()
-        
-        let serverAddress = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
-        let url = URL(string: serverAddress)
-        let urlRequest = URLRequest(url: url!)
-        let urlSession = URLSession.shared.dataTask(with: urlRequest){
-            data, response, error in
-            if let data = data{
-                let decoder = JSONDecoder()
-                let menuList = try? decoder.decode(MenuList.self, from: data)
-                for dish in menuList!.menu{
-                    let newDish = Dish(context: viewContext)
-                    newDish.title = dish.title
-                    newDish.price = dish.price
-                    newDish.desc = dish.description
-                    newDish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/pasta.jpg?raw=true"
-                }
-                try? viewContext.save()
-
+    
+    func Categories() -> some View{
+        VStack{
+            HStack {
+                Text("ORDER FOR DELIVERY")
+                    .sectionsTextStyle()
+                SortTool()
             }
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 15 ){
+                    Toggle("Starters", isOn: $startersEnabled)
+                    Toggle("Mains", isOn: $mainsEnabled)
+                    Toggle("Desserts", isOn: $dessertsEnabled)
+                    Toggle("Drinks", isOn: $drinksEnabled)
+                }
+                .toggleStyle(MyToggleStyle())
+            }
+            Divider()
         }
-        urlSession.resume()
-        
+        .padding(.horizontal)
     }
+    
+    func SearchBar() -> some View {
+        TextField("Search for a Dish", text: $searchText)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .font(.system(size: 20, weight: .heavy, design: .default))
+            .padding()
+    }
+    func SortTool() -> some View {
+        Button(action: {
+            isAscending.toggle()
+        }) {
+            Image(systemName: isAscending ? "arrow.up" : "arrow.down")
+        }
+    }
+
     func buildSortDescriptors() -> [NSSortDescriptor]{
-        return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare))]
+        return [NSSortDescriptor(key: "title", ascending: isAscending)]
     }
+    
     func buildPredicate() -> NSPredicate{
-        if searchText.isEmpty{
-            return NSPredicate(value: true)
-        }
-        return NSPredicate(format: "title CONTAINS [cd] %@",searchText)
+        
+        let search = searchText.isEmpty ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS [cd] %@",searchText)
+        let starters = startersEnabled ? NSPredicate(format: "category == %@", "starters") : NSPredicate(value: true)
+        let mains = mainsEnabled ? NSPredicate(format: "category == %@", "mains") : NSPredicate(value: true)
+        let desserts = dessertsEnabled ? NSPredicate(format: "category == %@", "desserts") : NSPredicate(value: true)
+        let drinks = drinksEnabled ? NSPredicate(format: "category == %@", "drinks") : NSPredicate(value: true)
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [search, starters, mains, desserts, drinks])
+        
+        return compoundPredicate
+
     }
   
 }

@@ -24,9 +24,8 @@ struct Onboarding: View {
                 }
                 
                 Image("Logo")
+                
                 Hero()
-                    .background(Color.primaryColor1)
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
 
                 VStack() {
                     HStack{
