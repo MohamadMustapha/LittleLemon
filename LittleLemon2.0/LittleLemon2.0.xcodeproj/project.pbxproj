@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D14D50242BCB026E0004093E /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = D14D50232BCB026E0004093E /* Network */; };
+		D14D50262BCB02730004093E /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = D14D50252BCB02730004093E /* Pages */; };
+		D14D50282BCB02780004093E /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = D14D50272BCB02780004093E /* Shared */; };
 		D173EF7C2BCAE7810058AB60 /* LittleLemon2_0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D173EF7B2BCAE7810058AB60 /* LittleLemon2_0App.swift */; };
 		D173EF7E2BCAE7810058AB60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D173EF7D2BCAE7810058AB60 /* ContentView.swift */; };
 		D173EF802BCAE7820058AB60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D173EF7F2BCAE7820058AB60 /* Assets.xcassets */; };
@@ -29,12 +32,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14D50242BCB026E0004093E /* Network in Frameworks */,
+				D14D50262BCB02730004093E /* Pages in Frameworks */,
+				D14D50282BCB02780004093E /* Shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D14D50222BCB026E0004093E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D173EF6F2BCAE7810058AB60 = {
 			isa = PBXGroup;
 			children = (
@@ -43,6 +56,7 @@
 				D14D501F2BCAE8E40004093E /* Network */,
 				D173EF7A2BCAE7810058AB60 /* LittleLemon2.0 */,
 				D173EF792BCAE7810058AB60 /* Products */,
+				D14D50222BCB026E0004093E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +103,11 @@
 			dependencies = (
 			);
 			name = LittleLemon2.0;
+			packageProductDependencies = (
+				D14D50232BCB026E0004093E /* Network */,
+				D14D50252BCB02730004093E /* Pages */,
+				D14D50272BCB02780004093E /* Shared */,
+			);
 			productName = LittleLemon2.0;
 			productReference = D173EF782BCAE7810058AB60 /* LittleLemon2.0.app */;
 			productType = "com.apple.product-type.application";
@@ -352,6 +371,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D14D50232BCB026E0004093E /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
+		};
+		D14D50252BCB02730004093E /* Pages */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Pages;
+		};
+		D14D50272BCB02780004093E /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D173EF702BCAE7810058AB60 /* Project object */;
 }
