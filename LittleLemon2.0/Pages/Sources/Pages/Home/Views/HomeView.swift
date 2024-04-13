@@ -23,7 +23,6 @@ struct HomeView: View {
                 ForEach(dishes) { dish in
                     VStack{
                         Text(dish.title)
-                        Text(dish.price)
                     }
                 }
 
